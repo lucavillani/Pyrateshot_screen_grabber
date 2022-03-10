@@ -17,12 +17,17 @@ def take_screenshot():
 
     screenshot.save(file_path)
 
+    print("Pyrashot has captured a screenshot \n")
+
     return(file_path)
     
+def main():
+    frequency = float(input("How frenquently you want Pyrateshot to capture a screenshot? [insert seconds] ---> "))
+    schedule.every(frequency).seconds.do(take_screenshot)
+    while True:
+        schedule.run_pending()
+        time.sleep(1)
+
 print("\n WELCOME TO PYRATESHOT \n")
 
-take_screenshot()
-
-print("\n Pyrashot has saved a screenshot \n")
-
-quit()
+main()
